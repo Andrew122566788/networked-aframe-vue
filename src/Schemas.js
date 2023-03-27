@@ -34,6 +34,9 @@ class Schemas {
       if (!this.validateTemplate(schema, templateEl)) {
         return;
       }
+      for(let child of templateEl.children){
+        templateEl.content.appendChild(child)
+      }
       this.templateCache[schema.template] = document.importNode(templateEl.content, true);
     } else {
       NAF.log.error('Schema not valid: ', schema);
@@ -90,11 +93,11 @@ class Schemas {
   }
 
   isTemplateTag(el) {
-    return el.tagName.toLowerCase() === 'template';
+    return ['naf-template', 'template'].indexOf(el.tagName.toLowerCase()) > -1;
   }
 
   templateHasOneOrZeroChildren(el) {
-    return el.content.childElementCount < 2;
+    return el.childNodes.length < 2;
   }
 
   remove(template) {
