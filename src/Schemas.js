@@ -90,7 +90,7 @@ class Schemas {
   }
 
   isTemplateTag(el) {
-    return ['naf-template', 'template'].indexOf(el.tagName.toLowerCase()) > -1;
+    return ['a-template', 'template'].indexOf(el.tagName.toLowerCase()) > -1;
   }
 
   templateHasOneOrZeroChildren(el) {
